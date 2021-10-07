@@ -30,4 +30,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test:runner:1.4.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    // Logging
+    implementation "com.jakewharton.timber:timber:4.7.1"
 }

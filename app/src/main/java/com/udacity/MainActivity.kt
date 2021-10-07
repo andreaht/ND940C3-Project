@@ -42,8 +42,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun download() {
+        val requestUrl = Uri.parse(
+            when(radio_button.checkedRadioButtonId) {
+                R.id.radio_glide -> URL_GLIDE
+                R.id.radio_nd940 -> URL_ND940
+                else -> URL_RETROFIT
+            }
+        )
         val request =
-            DownloadManager.Request(Uri.parse(URL))
+            DownloadManager.Request(requestUrl)
                 .setTitle(getString(R.string.app_name))
                 .setDescription(getString(R.string.app_description))
                 .setRequiresCharging(false)
@@ -56,8 +63,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val URL =
-            "https://github.com/udacity/nd940-c3-advanced-android-programming-project-starter/archive/master.zip"
+        private const val URL_ND940 =
+            "https://github.com/andreaht/ND940C3-Project/archive/refs/heads/master.zip"
+        private const val URL_GLIDE = "https://github.com/bumptech/glide/archive/refs/heads/master.zip"
+        private const val URL_RETROFIT = "https://github.com/square/retrofit/archive/refs/heads/master.zip"
         private const val CHANNEL_ID = "channelId"
     }
 
