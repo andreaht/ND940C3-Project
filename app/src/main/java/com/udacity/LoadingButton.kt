@@ -28,7 +28,7 @@ class LoadingButton @JvmOverloads constructor(
     private var progress = 0
     private var text = "Download"
     private var textBounds = Rect()
-    private val circleMargin = 15f
+    private val circleMargin = 30f
 
     private var buttonState: ButtonState by Delegates.observable<ButtonState>(ButtonState.Completed) { p, old, new ->
         when (new){
