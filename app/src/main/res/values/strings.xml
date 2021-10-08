@@ -17,4 +17,6 @@
     <string name="radio_retrofit">Retrofit Type-safe HTTP client dor Android and Java by Square, Inc</string>
 
     <string name="select_download">Please select the file to download</string>
+    <string name="download">Download</string>
+    <string name="loading">We are loading</string>
 </resources>

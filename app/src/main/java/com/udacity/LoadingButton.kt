@@ -26,7 +26,7 @@ class LoadingButton @JvmOverloads constructor(
 
     private var valueAnimator = ValueAnimator()
     private var progress = 0
-    private var text = "Download"
+    private var text = context.getString(R.string.download)
     private var textBounds = Rect()
     private val circleMargin = 30f
 
@@ -43,6 +43,7 @@ class LoadingButton @JvmOverloads constructor(
                 valueAnimator.start()
             }
             ButtonState.Completed -> {
+                text = context.getString(R.string.download)
                 valueAnimator.cancel()
                 invalidate()
             }
@@ -118,10 +119,12 @@ class LoadingButton @JvmOverloads constructor(
 
     override fun performClick(): Boolean {
         return if (buttonState != ButtonState.Clicked) {
+            text = context.getString(R.string.loading)
             buttonState = ButtonState.Clicked
             super.performClick()
-        } else
+        } else {
             true;
+        }
     }
 
     /**
