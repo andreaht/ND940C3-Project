@@ -19,4 +19,9 @@
     <string name="select_download">Please select the file to download</string>
     <string name="download">Download</string>
     <string name="loading">We are loading</string>
+
+    <string name="download_notification_channel_description">download completed</string>
+    <string name="notification_channel_id" translatable="false">download_channel</string>
+    <string name="notification_channel_name" translatable="true">Download</string>
+    <string name="status">Check the statusù</string>
 </resources>
