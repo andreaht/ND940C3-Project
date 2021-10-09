@@ -15,13 +15,16 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
+import com.udacity.databinding.ActivityMainBinding
+import com.udacity.databinding.ContentMainBinding
 
 
 class MainActivity : AppCompatActivity() {
 
     private var downloadID: Long = 0
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var contentBinding: ContentMainBinding
 
     private lateinit var notificationManager: NotificationManager
     private lateinit var pendingIntent: PendingIntent
@@ -29,13 +32,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        contentBinding = binding.content
+        val view = binding.root
+        setContentView(view)
+        setSupportActionBar(binding.toolbar)
 
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
 
-        custom_button.setOnClickListener {
-            if(radio_button.checkedRadioButtonId > 0)
+        contentBinding.customButton.setOnClickListener {
+            if(contentBinding.radioButton.checkedRadioButtonId > 0)
                 download()
             else
                 Toast.makeText(applicationContext, getText(R.string.select_download), Toast.LENGTH_SHORT).show()
@@ -57,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun download() {
         val requestUrl = Uri.parse(
-            when(radio_button.checkedRadioButtonId) {
+            when(contentBinding.radioButton.checkedRadioButtonId) {
                 R.id.radio_glide -> URL_GLIDE
                 R.id.radio_nd940 -> URL_ND940
                 else -> URL_RETROFIT
