@@ -12,9 +12,11 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import com.udacity.databinding.ActivityMainBinding
 import com.udacity.databinding.ContentMainBinding
 
@@ -40,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
 
+
         contentBinding.customButton.setOnClickListener {
             if(contentBinding.radioButton.checkedRadioButtonId > 0)
                 download()
@@ -47,15 +50,52 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, getText(R.string.select_download), Toast.LENGTH_SHORT).show()
         }
 
-        createChannel(getString(R.string.notification_channel_id),
-            getString(R.string.notification_channel_name))
+        createChannel(getString(R.string.notification_channel_id), getString(R.string.notification_channel_name))
 
     }
 
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val id = intent?.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1)
-            if( id == downloadID){
+            if (id == downloadID) {
+
+                val query = DownloadManager.Query()
+                query.setFilterById(id)
+                val downloadManager = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
+                val cursor = downloadManager.query(query)
+
+                if (cursor.moveToFirst()) {
+
+                    val statusColumn = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)
+
+                    when (cursor.getInt(statusColumn)) {
+                        DownloadManager.STATUS_SUCCESSFUL -> {
+                            val notificationManager = ContextCompat.getSystemService(
+                                applicationContext,
+                                NotificationManager::class.java
+                            ) as NotificationManager
+                            notificationManager.sendNotification(
+                                applicationContext.getText(R.string.download_ready).toString(),
+                                applicationContext,
+                                findViewById<RadioButton>(contentBinding.radioButton.checkedRadioButtonId).text.toString(),
+                                true
+                            )
+                        }
+                        DownloadManager.STATUS_FAILED -> {
+                            val notificationManager = ContextCompat.getSystemService(
+                                applicationContext,
+                                NotificationManager::class.java
+                            ) as NotificationManager
+                            notificationManager.sendNotification(
+                                applicationContext.getText(R.string.download_ready).toString(),
+                                applicationContext,
+                                findViewById<RadioButton>(contentBinding.radioButton.checkedRadioButtonId).text.toString(),
+                                false
+                            )
+                        }
+                    }
+                }
+
 
             }
         }
