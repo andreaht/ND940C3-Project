@@ -4,12 +4,11 @@
 
 
     <Transition
-
-        app:autoTransition="animateToEnd"
-        app:constraintSetEnd="@id/end"
         app:constraintSetStart="@+id/start"
-        app:duration="3000"
-        app:motionInterpolator="linear" />
+        app:constraintSetEnd="@id/end"
+        app:duration="2000"
+        app:motionInterpolator="linear"
+        app:autoTransition="animateToEnd" />
 
     <ConstraintSet android:id="@+id/start">
 
@@ -18,21 +17,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="54dp"
-            android:alpha="0.0"
             android:gravity="center"
-            app:layout_constraintBaseline_toBaselineOf="@+id/file_name_textView"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <Constraint
             android:id="@+id/file_name_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="54dp"
-            android:alpha="0.0"
             android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/file_name_header"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <Constraint
             android:id="@+id/status_header"
@@ -41,25 +39,24 @@
             android:layout_marginTop="44dp"
             android:alpha="0.0"
             android:gravity="center"
-            app:layout_constraintBaseline_toBaselineOf="@+id/status_textView"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <Constraint
             android:id="@+id/status_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="44dp"
-            android:alpha="0.0"
             android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/status_header"
-            app:layout_constraintTop_toBottomOf="@id/file_name_textView" />
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <Constraint
             android:id="@+id/okay_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="0.0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -73,7 +70,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="54dp"
-            android:alpha="1.0"
             android:gravity="center"
             app:layout_constraintBaseline_toBaselineOf="@+id/file_name_textView"
             app:layout_constraintStart_toStartOf="parent" />
@@ -83,7 +79,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="54dp"
-            android:alpha="1.0"
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/file_name_header"
@@ -94,7 +89,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="44dp"
-            android:alpha="1.0"
             android:gravity="center"
             app:layout_constraintBaseline_toBaselineOf="@+id/status_textView"
             app:layout_constraintStart_toStartOf="parent" />
@@ -104,7 +98,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="44dp"
-            android:alpha="1.0"
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/status_header"
@@ -114,7 +107,6 @@
             android:id="@+id/okay_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:alpha="1.0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

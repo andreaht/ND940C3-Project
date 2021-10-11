@@ -13,7 +13,6 @@ private val NOTIFICATION_ID = 0
 private val REQUEST_CODE = 0
 private val FLAGS = 0
 
-// TODO: Step 1.1 extension function to send messages (GIVEN)
 /**
  * Builds and delivers the notification.
  *
@@ -70,13 +69,4 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
         .setPriority(NotificationCompat.PRIORITY_HIGH)
     // call notify
     notify(NOTIFICATION_ID, builder.build())
-}
-
-// TODO: Step 1.14 Cancel all notifications
-/**
- * Cancels all notifications.
- *
- */
-fun NotificationManager.cancelNotifications() {
-    cancelAll()
 }
