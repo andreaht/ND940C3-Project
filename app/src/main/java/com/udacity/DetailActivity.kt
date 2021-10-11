@@ -32,11 +32,11 @@ class DetailActivity : AppCompatActivity() {
         status = intent.getBooleanExtra(STATUS_EXTRA, false)
         Timber.i("%S: %b", fileName, status)
 
-        contentBinding.fileNameTextView.text = fileName
-        contentBinding.statusTextView.text = status.toString()
-        contentBinding.statusTextView.setTextColor(if (status) Color.GREEN else Color.RED)
+        contentBinding.fileName.text = fileName
+        contentBinding.status.text = status.toString()
+        contentBinding.status.setTextColor(if (status) Color.GREEN else Color.RED)
 
-        contentBinding.okayButton.setOnClickListener {
+        contentBinding.okButton.setOnClickListener {
             startActivity(
                 Intent(
                     this,

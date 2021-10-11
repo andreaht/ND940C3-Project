@@ -6,51 +6,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="18dp"
-    app:layoutDescription="@xml/activity_detail_scene">
+    app:layoutDescription="@xml/detail">
+
+
+    <!--views position and style taken from my first udacity project "shoestore":
+     https://github.com/andreaht/ShoeStore-->
 
     <TextView
-        android:id="@+id/file_name_header"
+        android:id="@+id/file_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
-        android:gravity="center"
-        android:text="@string/file_name"
-        android:textSize="24sp" />
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:text="@string/file_name_title"
+        app:layout_constraintBaseline_toBaselineOf="@+id/file_name"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/file_name_textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
-        android:gravity="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/status_header"
+        android:id="@+id/status_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:gravity="center"
+        android:layout_marginStart="16dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="normal"
         android:text="@string/status_title"
-        android:textSize="24sp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/status"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/status_textView"
+        android:id="@+id/file_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:gravity="center"
-        android:textSize="24sp"
-        tools:text="Fail" />
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/file_name_label"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/status_label"
+        app:layout_constraintTop_toBottomOf="@+id/file_name" />
 
     <Button
-        android:id="@+id/okay_button"
+        android:id="@+id/ok_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:text="@string/okay_button"
-        android:textColor="@color/white"
-        android:textSize="18sp" />
+        android:layout_marginBottom="32dp"
+        android:layout_marginHorizontal="32dp"
+        android:text="@string/ok"
+        android:theme="@style/Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
